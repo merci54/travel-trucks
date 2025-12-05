@@ -19,6 +19,7 @@ type CityOption = {
 
 export default function SidebarFilter() {
   const [options, setOptions] = useState<CityOption[]>([]);
+
   useEffect(() => {
     const getCities = async () => {
       try {
@@ -115,24 +116,51 @@ export default function SidebarFilter() {
       <div className={css.filters}>
         <p className={css.text}>Filters</p>
         <div className={css.equipment}>
-          <h3>Vehicle equipment</h3>
-          <ul className={css.menuBlock}>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
+          <h3 className={css.subTitle}>Vehicle equipment</h3>
+          <ul className={css.menuList}>
+            <li className={css.menuItem}>
+              <Image src={'/icons/wind.svg'} width={32} height={32} alt="wind icon" />
+              <p>AC</p>
+            </li>
+            <li className={css.menuItem}>
+              <Image src={'/icons/diagram.svg'} width={32} height={32} alt="diagram icon" />
+              <p>Automatic</p>
+            </li>
+            <li className={css.menuItem}>
+              <Image src={'/icons/cup-hot.svg'} width={32} height={32} alt="cup hot icon" />
+              <p>Kitchen</p>
+            </li>
+            <li className={css.menuItem}>
+              <Image src={'/icons/tv.svg'} width={32} height={32} alt="tv icon" />
+              <p>TV</p>
+            </li>
+            <li className={css.menuItem}>
+              <Image src={'/icons/shower.svg'} width={32} height={32} alt="shower icon" />
+              <p>Bathroom</p>
+            </li>
           </ul>
         </div>
         <div className={css.type}>
-          <h3>Vehicle type</h3>
-          <ul className={css.menuBlock}>
-            <li>1</li>
-            <li>2</li>
+          <h3 className={css.subTitle}>Vehicle type</h3>
+          <ul className={css.menuList}>
+            <li className={css.menuItem}>
+              <Image src={'/icons/grid.svg'} width={32} height={32} alt="grid icon" />
+              <p>Van</p>
+            </li>
+            <li className={css.menuItem}>
+              <Image src={'/icons/grid2.svg'} width={32} height={32} alt="grid icon" />
+              <p>Fully Integrated</p>
+            </li>
+            <li className={css.menuItem}>
+              <Image src={'/icons/grid3.svg'} width={32} height={32} alt="grid icon" />
+              <p>Alcove</p>
+            </li>
           </ul>
         </div>
       </div>
-      <button type="submit"> Search</button>
+      <button className={css.btn} type="submit">
+        Search
+      </button>
     </div>
   );
 }

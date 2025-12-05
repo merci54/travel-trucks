@@ -49,6 +49,8 @@
   background-color: var(--button);
   color: var(--white);
   padding: 16px 0;
+
+  cursor: pointer;
 }
 
 .Button:hover {

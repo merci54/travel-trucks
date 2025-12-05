@@ -1,0 +1,90 @@
+.card {
+  width: 888px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  border: 1px solid var(--grey-light);
+  border-radius: 20px;
+
+  padding: 24px;
+}
+
+.img {
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 524px;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 8px;
+}
+
+.title {
+  cursor: pointer;
+}
+
+.upper div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.lower {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.reviews {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.reviews p {
+  text-decoration: underline;
+}
+
+.location {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.filters {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding-right: 60px;
+}
+
+.filtersItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background-color: var(--badges);
+  border-radius: 100px;
+
+  padding: 12px 18px;
+
+  composes: Body2 from global;
+}
+
+.btn {
+  composes: Button from global;
+  width: 166px;
+}
