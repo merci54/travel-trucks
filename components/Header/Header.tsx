@@ -13,14 +13,8 @@ export default function Header() {
     <header className={css.header}>
       <Container>
         <div className={css.wrapper}>
-          <Link href="/">
-            <Image
-              className={css.logo}
-              src="/logo/logo.svg"
-              alt="TravelTrucks"
-              width={136}
-              height={16}
-            />
+          <Link className={css.logo} href="/">
+            <Image src="/logo/logo.svg" alt="TravelTrucks" width={136} height={16} />
           </Link>
 
           <ul className={css.menuList}>

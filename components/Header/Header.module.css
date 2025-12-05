@@ -10,8 +10,11 @@
 }
 
 .logo {
-  margin: 28px 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  padding: 28px 0;
 }
 
 .menuList {
@@ -24,9 +27,12 @@
 
 .menuItem {
   cursor: pointer;
-  margin: 28px 0;
 
   composes: Body2 from global;
+}
+
+.menuItem a {
+  padding: 24px 0;
 }
 
 .empty {

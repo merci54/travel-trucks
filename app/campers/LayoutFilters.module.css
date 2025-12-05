@@ -1,0 +1,14 @@
+.container {
+  padding-top: 48px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 64px;
+  min-height: calc(100vh - 72px);
+}
+
+.sidebar {
+  flex: 0 0 360px;
+  min-height: 100%;
+}

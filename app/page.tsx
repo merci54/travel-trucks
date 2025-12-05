@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className={css.main}>
+    <div className={css.home}>
       <Container>
         <div className={css.wrapper}>
           <div className={css.mainBlock}>
@@ -18,6 +18,6 @@ export default function Home() {
           </div>
         </div>
       </Container>
-    </main>
+    </div>
   );
 }
