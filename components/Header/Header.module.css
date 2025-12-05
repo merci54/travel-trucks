@@ -1,0 +1,43 @@
+.header {
+  background-color: var(--inputs);
+  border: 1px solid var(--badges);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 28px 0;
+  cursor: pointer;
+}
+
+.menuList {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex: 1;
+}
+
+.menuItem {
+  cursor: pointer;
+  margin: 28px 0;
+
+  composes: Body2 from global;
+}
+
+.empty {
+  display: block;
+  width: 136px;
+}
+
+.menuItem:hover {
+  color: var(--button);
+}
+
+.active {
+  color: var(--button-hover);
+}

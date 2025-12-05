@@ -1,0 +1,32 @@
+.main {
+  background-image: url('/background/background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+
+  height: calc(100vh - 72px);
+}
+
+.mainBlock {
+  color: var(--inputs);
+}
+
+.title {
+  margin-bottom: 16px;
+  composes: H1 from global;
+}
+
+.desc {
+  margin-bottom: 40px;
+  composes: H2 from global;
+}
+
+.btn {
+  width: 173px;
+  composes: Button from global;
+}

@@ -1,9 +1,23 @@
-import "modern-normalize";
+import 'modern-normalize';
+import css from './page.module.css';
+import Container from '@/components/Container/Container';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <main className={css.main}>
+      <Container>
+        <div className={css.wrapper}>
+          <div className={css.mainBlock}>
+            <h1 className={css.title}>Campers of your dreams</h1>
+            <p className={css.desc}>You can find everything you want in our catalog</p>
+
+            <Link className={css.btn} href={'/campers'}>
+              View Now
+            </Link>
+          </div>
+        </div>
+      </Container>
+    </main>
   );
 }
