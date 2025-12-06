@@ -5,14 +5,14 @@ export interface Camper {
   rating: number;
   location: string;
   description: string;
-  form: string;
+  form: 'alcove' | 'fullyIntegrated' | 'van';
   length: string;
   width: string;
   height: string;
   tank: string;
   consumption: string;
-  transmission: string;
-  engine: string;
+  transmission: 'automatic' | 'manual';
+  engine: 'diesel' | 'petrol' | 'hybrid';
   AC: boolean;
   bathroom: boolean;
   kitchen: boolean;

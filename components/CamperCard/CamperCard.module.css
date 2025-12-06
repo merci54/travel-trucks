@@ -10,8 +10,17 @@
   padding: 24px;
 }
 
-.img {
+.imgBlock {
+  position: relative;
+  width: 292px;
+  aspect-ratio: 292 / 320;
+  border-radius: 10px;
+  overflow: hidden;
   cursor: pointer;
+}
+
+.img {
+  object-fit: cover;
 }
 
 .content {
@@ -80,8 +89,6 @@
   gap: 8px;
   align-items: center;
   flex-wrap: wrap;
-
-  padding-right: 60px;
 }
 
 .filtersItem {

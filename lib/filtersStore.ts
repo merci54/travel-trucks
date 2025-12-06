@@ -1,7 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface activeFilters {
+export type TransmissionType = 'automatic' | 'manual' | null;
+export type EngineType = 'petrol' | 'diesel' | 'hybrid' | null;
+export type FormType = 'alcove' | 'van' | 'fullyIntegrated' | null;
+
+export type ActiveFilters = {
   AC: boolean;
   bathroom: boolean;
   kitchen: boolean;
@@ -11,42 +15,50 @@ interface activeFilters {
   microwave: boolean;
   gas: boolean;
   water: boolean;
-  automatic: boolean;
-  manual: boolean;
-  van: boolean;
-  fullyIntegrated: boolean;
-  alcove: boolean;
-}
 
-type FiltersStore = {
-  activeFilters: activeFilters;
+  transmission: TransmissionType;
+  engine: EngineType;
+  form: FormType;
+};
+
+export type FilterKey = keyof ActiveFilters;
+
+export type FiltersStore = {
+  activeFilters: ActiveFilters;
   currentCity: string | null;
-  setActiveFilters: (filters: activeFilters) => void;
+  setActiveFilters: (filters: Partial<ActiveFilters>) => void;
   setCurrentCity: (city: string | null) => void;
+};
+
+const initialFilters: ActiveFilters = {
+  AC: false,
+  bathroom: false,
+  kitchen: false,
+  TV: false,
+  radio: false,
+  refrigerator: false,
+  microwave: false,
+  gas: false,
+  water: false,
+
+  transmission: null,
+  engine: null,
+  form: null,
 };
 
 export const useFiltersStore = create<FiltersStore>()(
   persist(
     set => ({
-      activeFilters: {
-        AC: false,
-        bathroom: false,
-        kitchen: false,
-        TV: false,
-        radio: false,
-        refrigerator: false,
-        microwave: false,
-        gas: false,
-        water: false,
-        automatic: false,
-        manual: false,
-        van: false,
-        fullyIntegrated: false,
-        alcove: false,
-      },
+      activeFilters: initialFilters,
+
       currentCity: null,
-      setActiveFilters: (filters: activeFilters) => set({ activeFilters: filters }),
-      setCurrentCity: (city: string | null) => set({ currentCity: city }),
+
+      setActiveFilters: filters =>
+        set(state => ({
+          activeFilters: { ...state.activeFilters, ...filters },
+        })),
+
+      setCurrentCity: city => set({ currentCity: city }),
     }),
     {
       name: 'filters-storage',
