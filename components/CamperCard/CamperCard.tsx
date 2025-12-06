@@ -16,7 +16,8 @@ export default function CamperCard() {
             <h2 className={css.title}>Mavericks</h2>
             <div>
               <h2>€8000.00</h2>
-              <Image src={'/icons/heart-dark.svg'} alt="heart icon" width={26} height={24} />
+
+              <div className={css.heartIcon}></div>
             </div>
           </div>
           <div className={css.lower}>

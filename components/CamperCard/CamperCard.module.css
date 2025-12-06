@@ -33,6 +33,19 @@
   cursor: pointer;
 }
 
+.heartIcon {
+  width: 24px;
+  height: 24px;
+  background-image: url('/icons/heart-dark.svg');
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.heartIcon:hover {
+  background-image: url('/icons/heart-red.svg');
+}
+
 .upper div {
   display: flex;
   gap: 12px;

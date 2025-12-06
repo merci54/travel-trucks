@@ -12,6 +12,8 @@ export type SelectProps = {
   options: CityOption[];
   styles: StylesConfig<CityOption, false>;
   placeholder?: string;
+  value: CityOption | null;
+  onChange: (value: CityOption | null) => void;
 };
 
 export default function SelectClient(props: SelectProps) {

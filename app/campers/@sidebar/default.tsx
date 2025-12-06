@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import css from './SidebarFilters.module.css';
 import type { StylesConfig } from 'react-select';
-
 import dynamic from 'next/dynamic';
 import type { SelectProps } from './SelectClient';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useFiltersStore } from '@/lib/filtersStore';
 
 const Select = dynamic<SelectProps>(() => import('./SelectClient'), {
   ssr: false,
@@ -19,6 +19,7 @@ type CityOption = {
 
 export default function SidebarFilter() {
   const [options, setOptions] = useState<CityOption[]>([]);
+  const { activeFilters, setActiveFilters, currentCity, setCurrentCity } = useFiltersStore();
 
   useEffect(() => {
     const getCities = async () => {
@@ -110,7 +111,13 @@ export default function SidebarFilter() {
             height={20}
           />
 
-          <Select options={options} styles={customStyles} placeholder="City" />
+          <Select
+            options={options}
+            value={currentCity ? { value: currentCity, label: `${currentCity}, Ukraine` } : null}
+            onChange={city => setCurrentCity(city ? city.value : null)}
+            styles={customStyles}
+            placeholder="City"
+          />
         </div>
       </div>
       <div className={css.filters}>
@@ -118,23 +125,48 @@ export default function SidebarFilter() {
         <div className={css.equipment}>
           <h3 className={css.subTitle}>Vehicle equipment</h3>
           <ul className={css.menuList}>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.AC ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, AC: !activeFilters.AC });
+              }}
+            >
               <Image src={'/icons/wind.svg'} width={32} height={32} alt="wind icon" />
               <p>AC</p>
             </li>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.automatic ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, automatic: !activeFilters.automatic });
+              }}
+            >
               <Image src={'/icons/diagram.svg'} width={32} height={32} alt="diagram icon" />
               <p>Automatic</p>
             </li>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.kitchen ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, kitchen: !activeFilters.kitchen });
+              }}
+            >
               <Image src={'/icons/cup-hot.svg'} width={32} height={32} alt="cup hot icon" />
               <p>Kitchen</p>
             </li>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.TV ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, TV: !activeFilters.TV });
+              }}
+            >
               <Image src={'/icons/tv.svg'} width={32} height={32} alt="tv icon" />
               <p>TV</p>
             </li>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.bathroom ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, bathroom: !activeFilters.bathroom });
+              }}
+            >
               <Image src={'/icons/shower.svg'} width={32} height={32} alt="shower icon" />
               <p>Bathroom</p>
             </li>
@@ -143,15 +175,33 @@ export default function SidebarFilter() {
         <div className={css.type}>
           <h3 className={css.subTitle}>Vehicle type</h3>
           <ul className={css.menuList}>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.van ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, van: !activeFilters.van });
+              }}
+            >
               <Image src={'/icons/grid.svg'} width={32} height={32} alt="grid icon" />
               <p>Van</p>
             </li>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.fullyIntegrated ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({
+                  ...activeFilters,
+                  fullyIntegrated: !activeFilters.fullyIntegrated,
+                });
+              }}
+            >
               <Image src={'/icons/grid2.svg'} width={32} height={32} alt="grid icon" />
               <p>Fully Integrated</p>
             </li>
-            <li className={css.menuItem}>
+            <li
+              className={`${css.menuItem} ${activeFilters.alcove ? css.active : ''}`}
+              onClick={() => {
+                setActiveFilters({ ...activeFilters, alcove: !activeFilters.alcove });
+              }}
+            >
               <Image src={'/icons/grid3.svg'} width={32} height={32} alt="grid icon" />
               <p>Alcove</p>
             </li>

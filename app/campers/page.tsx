@@ -10,7 +10,7 @@ export default function CatalogPage() {
   const [page, setPage] = useState(1);
   const perPage = 4;
 
-  const { data } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['campers'],
     queryFn: getCampers,
   });
@@ -36,6 +36,8 @@ export default function CatalogPage() {
       ) : (
         ''
       )}
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error loading campers.</p>}
     </div>
   );
 }
