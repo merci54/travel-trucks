@@ -1,4 +1,11 @@
-import type { FilterKey, FormType } from '@/lib/filtersStore';
+import type {
+  ActiveFilters,
+  TransmissionOption,
+  EngineOption,
+  FormOption,
+} from '@/lib/filtersStore';
+
+export type FilterKey = keyof ActiveFilters;
 
 export type FilterItem =
   | {
@@ -8,11 +15,18 @@ export type FilterItem =
       type: 'boolean';
     }
   | {
-      key: FilterKey;
+      key: 'transmission';
       label: string;
       icon: string;
       type: 'string';
-      value: string;
+      value: TransmissionOption;
+    }
+  | {
+      key: 'engine';
+      label: string;
+      icon: string;
+      type: 'string';
+      value: EngineOption;
     };
 
 export type FormFilterItem = {
@@ -20,8 +34,9 @@ export type FormFilterItem = {
   label: string;
   icon: string;
   type: 'string';
-  value: Exclude<FormType, null>;
+  value: FormOption;
 };
+
 export const EQUIPMENT_FILTERS: FilterItem[] = [
   { key: 'AC', label: 'AC', icon: '/icons/wind.svg', type: 'boolean' },
   { key: 'bathroom', label: 'Bathroom', icon: '/icons/shower.svg', type: 'boolean' },
@@ -47,6 +62,7 @@ export const EQUIPMENT_FILTERS: FilterItem[] = [
     icon: '/icons/diagram.svg',
     type: 'string',
   },
+
   { key: 'engine', value: 'petrol', label: 'Petrol', icon: '/icons/fuel-pump.svg', type: 'string' },
   { key: 'engine', value: 'diesel', label: 'Diesel', icon: '/icons/fuel-pump.svg', type: 'string' },
   { key: 'engine', value: 'hybrid', label: 'Hybrid', icon: '/icons/fuel-pump.svg', type: 'string' },

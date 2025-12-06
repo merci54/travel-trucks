@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type TransmissionType = 'automatic' | 'manual' | null;
-export type EngineType = 'petrol' | 'diesel' | 'hybrid' | null;
-export type FormType = 'alcove' | 'van' | 'fullyIntegrated' | null;
+export type TransmissionOption = 'automatic' | 'manual';
+export type EngineOption = 'petrol' | 'diesel' | 'hybrid';
+export type FormOption = 'van' | 'fullyIntegrated' | 'alcove';
 
 export type ActiveFilters = {
   AC: boolean;
@@ -16,21 +16,24 @@ export type ActiveFilters = {
   gas: boolean;
   water: boolean;
 
-  transmission: TransmissionType;
-  engine: EngineType;
-  form: FormType;
+  transmission: TransmissionOption[];
+  engine: EngineOption[];
+  form: FormOption[];
 };
-
-export type FilterKey = keyof ActiveFilters;
 
 export type FiltersStore = {
   activeFilters: ActiveFilters;
   currentCity: string | null;
+
+  appliedFilters: ActiveFilters;
+  appliedCity: string | null;
+
   setActiveFilters: (filters: Partial<ActiveFilters>) => void;
   setCurrentCity: (city: string | null) => void;
+  applyFilters: () => void;
 };
 
-const initialFilters: ActiveFilters = {
+export const initialFilters: ActiveFilters = {
   AC: false,
   bathroom: false,
   kitchen: false,
@@ -41,17 +44,19 @@ const initialFilters: ActiveFilters = {
   gas: false,
   water: false,
 
-  transmission: null,
-  engine: null,
-  form: null,
+  transmission: [],
+  engine: [],
+  form: [],
 };
 
 export const useFiltersStore = create<FiltersStore>()(
   persist(
     set => ({
       activeFilters: initialFilters,
-
       currentCity: null,
+
+      appliedFilters: initialFilters,
+      appliedCity: null,
 
       setActiveFilters: filters =>
         set(state => ({
@@ -59,9 +64,13 @@ export const useFiltersStore = create<FiltersStore>()(
         })),
 
       setCurrentCity: city => set({ currentCity: city }),
+
+      applyFilters: () =>
+        set(state => ({
+          appliedFilters: state.activeFilters,
+          appliedCity: state.currentCity,
+        })),
     }),
-    {
-      name: 'filters-storage',
-    }
+    { name: 'filters-storage' }
   )
 );

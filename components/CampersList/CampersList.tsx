@@ -10,9 +10,9 @@ interface CampersListProps {
 }
 
 export default function CampersList({ items }: CampersListProps) {
-  const { activeFilters, currentCity } = useFiltersStore();
+  const { appliedCity, appliedFilters } = useFiltersStore();
 
-  const filtered = filterCampers(items, activeFilters, currentCity);
+  const filtered = filterCampers(items, appliedFilters, appliedCity);
 
   return (
     <>

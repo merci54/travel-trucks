@@ -20,7 +20,8 @@ type CityOption = {
 
 export default function SidebarFilter() {
   const [options, setOptions] = useState<CityOption[]>([]);
-  const { activeFilters, setActiveFilters, currentCity, setCurrentCity } = useFiltersStore();
+  const { activeFilters, setActiveFilters, currentCity, setCurrentCity, applyFilters } =
+    useFiltersStore();
 
   useEffect(() => {
     const getCities = async () => {
@@ -127,10 +128,14 @@ export default function SidebarFilter() {
           <h3 className={css.subTitle}>Vehicle equipment</h3>
           <ul className={css.menuList}>
             {EQUIPMENT_FILTERS.map(filter => {
-              const isActive =
-                filter.type === 'boolean'
-                  ? activeFilters[filter.key]
-                  : activeFilters[filter.key] === filter.value;
+              let isActive = false;
+
+              if (filter.type === 'boolean') {
+                isActive = activeFilters[filter.key] as boolean;
+              } else {
+                const list = activeFilters[filter.key] as string[];
+                isActive = list.includes(filter.value);
+              }
 
               return (
                 <li
@@ -138,11 +143,14 @@ export default function SidebarFilter() {
                   className={`${css.menuItem} ${isActive ? css.active : ''}`}
                   onClick={() => {
                     if (filter.type === 'boolean') {
-                      setActiveFilters({ [filter.key]: !activeFilters[filter.key] });
+                      setActiveFilters({ [filter.key]: !isActive });
                     } else {
-                      setActiveFilters({
-                        [filter.key]: isActive ? null : filter.value,
-                      });
+                      const list = activeFilters[filter.key] as string[];
+                      const next = isActive
+                        ? list.filter(v => v !== filter.value)
+                        : [...list, filter.value];
+
+                      setActiveFilters({ [filter.key]: next });
                     }
                   }}
                 >
@@ -157,17 +165,20 @@ export default function SidebarFilter() {
           <h3 className={css.subTitle}>Vehicle type</h3>
           <ul className={css.menuList}>
             {FORM_FILTERS.map(filter => {
-              const isActive = activeFilters.form === filter.value;
+              const list = activeFilters.form;
+              const isActive = list.includes(filter.value);
 
               return (
                 <li
                   key={filter.label}
                   className={`${css.menuItem} ${isActive ? css.active : ''}`}
-                  onClick={() =>
-                    setActiveFilters({
-                      form: isActive ? null : filter.value,
-                    })
-                  }
+                  onClick={() => {
+                    const next = isActive
+                      ? list.filter(v => v !== filter.value)
+                      : [...list, filter.value];
+
+                    setActiveFilters({ form: next });
+                  }}
                 >
                   <Image src={filter.icon} width={32} height={32} alt={filter.label} />
                   <p>{filter.label}</p>
@@ -177,7 +188,7 @@ export default function SidebarFilter() {
           </ul>
         </div>
       </div>
-      <button className={css.btn} type="submit">
+      <button className={css.btn} type="button" onClick={applyFilters}>
         Search
       </button>
     </div>
