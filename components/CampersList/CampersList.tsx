@@ -15,14 +15,12 @@ export default function CampersList({ items }: CampersListProps) {
   const filtered = filterCampers(items, appliedFilters, appliedCity);
 
   return (
-    <>
-      <ul className={css.list}>
-        {filtered.length === 0 ? (
-          <p>No campers match your filters</p>
-        ) : (
-          filtered.map(camper => <CamperCard key={camper.id} {...camper} />)
-        )}
-      </ul>
-    </>
+    <ul className={css.list}>
+      {filtered.length === 0 ? (
+        <p>No campers match your filters</p>
+      ) : (
+        filtered.map(camper => <CamperCard key={camper.id} {...camper} />)
+      )}
+    </ul>
   );
 }

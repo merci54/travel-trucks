@@ -5,6 +5,8 @@ import { getCampers } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import css from './CatalogPage.module.css';
+import Container from '@/components/Container/Container';
+import SidebarFilter from '@/components/SidebarFilters/SidebarFilters';
 
 export default function CatalogPage() {
   const [page, setPage] = useState(1);
@@ -27,17 +29,24 @@ export default function CatalogPage() {
   };
 
   return (
-    <div className={css.wrapper}>
-      <CampersList total={totalItems} items={paginatedItems} />
-      {totalPages > page ? (
-        <button onClick={loadMore} className={css.loadBtn}>
-          Load more
-        </button>
-      ) : (
-        ''
-      )}
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Error loading campers.</p>}
+    <div className={css.container}>
+      <Container>
+        <div className={css.wrapper}>
+          <SidebarFilter />
+          <div className={css.catalogList}>
+            <CampersList total={totalItems} items={paginatedItems} />
+            {totalPages > page ? (
+              <button onClick={loadMore} className={css.loadBtn}>
+                Load more
+              </button>
+            ) : (
+              ''
+            )}
+            {isLoading && <p>Loading...</p>}
+            {isError && <p>Error loading campers.</p>}
+          </div>
+        </div>
+      </Container>
     </div>
   );
 }

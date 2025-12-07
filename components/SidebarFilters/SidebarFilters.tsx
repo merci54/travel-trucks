@@ -100,7 +100,7 @@ export default function SidebarFilter() {
   };
 
   return (
-    <div className={css.wrapper}>
+    <aside className={css.wrapper}>
       <div className={css.location}>
         <label className={css.cityLabel}>Location</label>
 
@@ -191,6 +191,6 @@ export default function SidebarFilter() {
       <button className={css.btn} type="button" onClick={applyFilters}>
         Search
       </button>
-    </div>
+    </aside>
   );
 }

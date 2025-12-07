@@ -1,0 +1,115 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.upperBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.title {
+  margin-bottom: 28px;
+}
+
+.lower {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.reviews {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.reviews p {
+  text-decoration: underline;
+}
+
+.location {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.gallery {
+  display: flex;
+  gap: 48px;
+}
+
+.imgBlock {
+  position: relative;
+  width: 292px;
+  aspect-ratio: 292 / 320;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.about {
+  composes: Body from global;
+  color: var(--text);
+}
+
+.lowerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  color: var(--main);
+}
+
+.buttons::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 45px;
+  height: 1px;
+  background-color: var(--grey-light);
+}
+
+.btn {
+  composes: H3 from global;
+  background: none;
+  outline: none;
+  border: none;
+
+  position: relative;
+}
+
+.btn.active::after {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 100%;
+  left: 0;
+  bottom: -24px;
+  height: 5px;
+  background-color: var(--button);
+  z-index: 999;
+}
+
+.infoBlock {
+  display: flex;
+  gap: 40px;
+}
+
+.featuresBlock {
+  padding: 44px 52px;
+}

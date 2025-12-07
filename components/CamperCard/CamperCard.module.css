@@ -83,6 +83,11 @@
   align-items: center;
 }
 
+.about {
+  composes: Body from global;
+  color: var(--text);
+}
+
 .filters {
   list-style: none;
   display: flex;
