@@ -35,7 +35,7 @@ export default function CatalogPage() {
           <SidebarFilter />
           <div className={css.catalogList}>
             <CampersList total={totalItems} items={paginatedItems} />
-            {totalPages > page ? (
+            {data && data.items.length !== 0 && totalPages > page ? (
               <button onClick={loadMore} className={css.loadBtn}>
                 Load more
               </button>

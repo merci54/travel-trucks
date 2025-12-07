@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <header className={css.header}>
       <Container>

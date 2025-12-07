@@ -50,6 +50,7 @@
   color: var(--white);
   padding: 16px 0;
 
+  transition: 0.2s background-color;
   cursor: pointer;
 }
 

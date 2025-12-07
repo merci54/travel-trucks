@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
+import { Toaster } from 'react-hot-toast';
 
 const InterSans = Inter({
   variable: '--font-inter-sans',
@@ -24,6 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={InterSans.variable}>
         <TanStackProvider>
+          <div>
+            <Toaster />
+          </div>
           <Header />
           <main>{children}</main>
         </TanStackProvider>

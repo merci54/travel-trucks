@@ -3,7 +3,6 @@
 import { getCamperById } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import css from './CamperPage.module.css';
 import Container from '@/components/Container/Container';
 import SingleCamperPage from '@/components/SingleCamperPage/SingleCamperPage';
 
@@ -21,7 +20,7 @@ export default function CamperPageClient() {
   });
 
   return (
-    <div style={{ paddingTop: '48px' }}>
+    <div style={{ paddingTop: '48px', paddingBottom: '80px' }}>
       <Container>
         {camper ? <SingleCamperPage {...camper} /> : <h2>This camper wan`t found! Try again</h2>}
         {isLoading && <p>Loading...</p>}

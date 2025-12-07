@@ -112,4 +112,154 @@
 
 .featuresBlock {
   padding: 44px 52px;
+  max-width: 631px;
+  min-height: 588px;
+  background-color: var(--inputs);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+
+.filtersItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #e9ecef;
+  border-radius: 100px;
+  padding: 12px 18px;
+}
+
+.subTitle {
+  composes: H3 from global;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.subTitle::after {
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: var(--grey-light);
+}
+
+.detailsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detailsList li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailsText {
+  composes: Body2 from global;
+  color: var(--main);
+}
+
+.reviewsList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+
+  max-width: 631px;
+}
+
+.reviewsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.authorBlock {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.authorAvatar {
+  width: 60px;
+  height: 60px;
+  background-color: var(--badges);
+  border-radius: 999px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authorAvatar {
+  color: var(--button);
+}
+
+.authorNameText {
+  composes: Body2 from global;
+  margin-bottom: 4px;
+}
+
+.booking {
+  padding: 44px 57px;
+  border-radius: 10px;
+  border: 1px solid var(--grey-light);
+
+  max-width: 641px;
+}
+
+.bookingTitle {
+  composes: H3 from global;
+  margin-bottom: 8px;
+}
+
+.bookingSubtitle {
+  composes: Body from global;
+  margin-bottom: 24px;
+}
+
+.form {
+  width: 527px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 100%;
+  padding: 18px;
+  background-color: var(--inputs);
+  border: none;
+  outline: none;
+
+  border-radius: 12px;
+}
+
+.input:nth-child(-n + 3) {
+  margin-bottom: 14px;
+}
+
+.submitBtn {
+  margin-top: 24px;
+  composes: Button from global;
+  border: none;
+  width: 166px;
+
+  margin: 24px auto 0 auto;
+}
+
+.commentInput {
+  min-height: 118px;
+  resize: none;
 }

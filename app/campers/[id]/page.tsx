@@ -3,15 +3,16 @@ import { getCamperById } from '@/lib/api';
 import CamperPageClient from './CamperPage.client';
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function CamperPage({ params }: Props) {
   const queryClient = new QueryClient();
+  const { id } = await params;
 
   await queryClient.prefetchQuery({
-    queryKey: ['camper', params.id],
-    queryFn: () => getCamperById(Number(params.id)),
+    queryKey: ['camper', id],
+    queryFn: () => getCamperById(Number(id)),
   });
 
   return (

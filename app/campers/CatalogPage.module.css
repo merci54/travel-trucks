@@ -20,11 +20,12 @@
 
   cursor: pointer;
 
-  margin: 40px 0 52px 0;
+  margin-top: 40px;
 }
 
 .container {
   padding-top: 48px;
+  padding-bottom: 52px;
 }
 
 .wrapper {
