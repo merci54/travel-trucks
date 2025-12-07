@@ -27,6 +27,7 @@
 
 .menuItem {
   cursor: pointer;
+  transition: 0.2s color;
 
   composes: Body2 from global;
 }
@@ -42,8 +43,4 @@
 
 .menuItem:hover {
   color: var(--button);
-}
-
-.active {
-  color: var(--button-hover);
 }

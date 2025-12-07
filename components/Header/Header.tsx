@@ -1,13 +1,11 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import css from './Header.module.css';
 import Link from 'next/link';
 import Container from '../Container/Container';
 import Image from 'next/image';
 
 export default function Header() {
-  const pathname = usePathname();
   return (
     <header className={css.header}>
       <Container>
@@ -17,10 +15,10 @@ export default function Header() {
           </Link>
 
           <ul className={css.menuList}>
-            <li className={`${css.menuItem} ${pathname === '/' ? css.active : ''}`}>
+            <li className={css.menuItem}>
               <Link href="/">Home</Link>
             </li>
-            <li className={`${css.menuItem} ${pathname === '/campers' ? css.active : ''}`}>
+            <li className={css.menuItem}>
               <Link href="/campers">Catalog</Link>
             </li>
           </ul>

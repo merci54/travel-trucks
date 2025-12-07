@@ -10,19 +10,15 @@ export default function CamperCard(props: Camper) {
   return (
     <li className={css.card}>
       <div className={css.imgBlock}>
-        <Image
-          src={props.gallery[0].thumb}
-          alt="vehicle image"
-          fill
-          className={css.img}
-          sizes="292px"
-        />
+        <Image src={props.gallery[0].thumb} alt="vehicle image" fill className={css.img} sizes="292px" />
       </div>
 
       <div className={css.content}>
         <div className={css.cardHeader}>
           <div className={css.upper}>
-            <h2 className={css.title}>{props.name}</h2>
+            <h2 className={css.title}>
+              <Link href={`/campers/${props.id}`}>{props.name} </Link>
+            </h2>
             <div>
               <h2>€{props.price}.00</h2>
               <div className={css.heartIcon}></div>
